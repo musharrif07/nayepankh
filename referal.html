@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Donation Page</title>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen">
+
+<nav class="bg-gray-800 text-white fixed top-0 left-0 right-0 z-10 p-4">
+    <h1 class="text-lg font-bold text-center">NayePankh Foundation</h1>
+</nav>
+
+<div class="bg-white shadow-md rounded-lg p-6 w-11/12 md:w-1/2 lg:w-1/3 mt-16">
+    <h1 class="text-2xl text-center mb-4">Donate Now</h1>
+    
+    <p class="text-lg mb-4">Your Referral Code: <strong id="referralCode">REF123</strong></p>
+    
+    <form id="donationForm">
+        <label for="amount" class="block mb-2">Donation Amount ($):</label>
+        <input type="number" id="amount" name="amount" class="border border-gray-300 p-2 rounded w-full mb-4" required>
+
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded w-full">Donate</button>
+    </form>
+
+    <div id="transactionMessage" class="mt-4 text-center text-green-600"></div>
+
+    <div class="mt-4">
+        <h3 class="text-lg">Impact of Your Donation</h3>
+        <input type="number" id="donationAmount" placeholder="Enter Amount" class="border p-2 mb-2 w-full">
+        <button onclick="calculateImpact()" class="bg-green-500 text-white px-4 py-2 w-full">Calculate Impact</button>
+        <p id="impactResult" class="mt-2"></p>
+    </div>
+</div>
+
+<script>
+    document.getElementById("donationForm").onsubmit = function(event) {
+        event.preventDefault(); 
+        const amount = document.getElementById("amount").value;
+        document.getElementById("transactionMessage").innerText = `Thank you for your donation of $${amount}!`;
+    };
+
+    function calculateImpact() {
+        const amount = document.getElementById("donationAmount").value;
+        const impact = amount * 2; // Example calculation
+        document.getElementById("impactResult").innerText = `Your donation of $${amount} could provide meals for ${impact} families.`;
+    }
+</script>
+
+</body>
+</html>
